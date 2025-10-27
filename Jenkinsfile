@@ -5,14 +5,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Setting up environment... 🏗️'
-                bat '"C:\Users\cramp\AppData\Local\Microsoft\WindowsApps\python.exe" --version'
+                bat '"C:\\Users\\cramp\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe" --version'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running calculator... 🧮'
-                bat '"C:\Users\cramp\AppData\Local\Microsoft\WindowsApps\python.exe" Calculator.py'
+                echo 'Running Calculator.py... 🧮'
+                bat '"C:\\Users\\cramp\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe" Calculator.py'
             }
         }
 
@@ -25,11 +25,11 @@ pipeline {
     }
 
     post {
-        failure {
-            echo '❌ Pipeline failed. Check logs for details.'
-        }
         success {
             echo '🎉 Pipeline executed successfully!'
+        }
+        failure {
+            echo '❌ Pipeline failed. Check logs for details.'
         }
     }
 }
