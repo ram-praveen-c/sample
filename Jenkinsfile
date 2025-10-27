@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        APP_NAME = 'JavaCalculatorApp'
+        APP_NAME = 'CalculatorApp'
     }
 
     stages {
@@ -18,7 +18,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the project... 🏗️'
-                bat 'javac Calculator.java'
+                bat 'python Calculator.py'
                 echo 'Build completed successfully.'
             }
         }
@@ -26,7 +26,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests... 🧪'
-                bat 'java Calculator'
+                bat 'Calculator'
                 echo 'All tests executed successfully.'
             }
         }
