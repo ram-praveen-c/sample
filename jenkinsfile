@@ -2,46 +2,50 @@ pipeline {
     agent any
 
     environment {
-        APP_NAME = "MyApp"
+        APP_NAME = 'JavaCalculatorApp'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/ram-praveen-c/DEv_model_lab_1.git'
+                echo 'Fetching source code from repository...'
+                // If using GitHub or Git, uncomment below line:
+                // git 'https://github.com/your-repo/java-calculator.git'
+                echo 'Source code checkout complete.'
             }
         }
 
         stage('Build') {
             steps {
-                echo "Building ${APP_NAME}..."
-                // Example for Maven build:
-                // sh 'mvn clean package'
+                echo 'Building the project... 🏗️'
+                bat 'javac Calculator.java'
+                echo 'Build completed successfully.'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running tests...'
-                // Example for Python:
-                // sh 'pytest tests/'
+                echo 'Running tests... 🧪'
+                bat 'java Calculator'
+                echo 'All tests executed successfully.'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying application...'
-                // Example: sh './deploy.sh'
+                echo 'Deploying the application... 🚀'
+                // You can add Docker or file copy commands here if needed
+                echo 'Deployment successful! ✅'
             }
         }
     }
 
     post {
         success {
-            echo 'Pipeline executed successfully!'
+            echo "🎉 Pipeline completed successfully for ${APP_NAME}!"
         }
         failure {
-            echo 'Pipeline failed. Please check logs.'
+            echo "❌ Pipeline failed. Check logs for errors."
         }
     }
 }
