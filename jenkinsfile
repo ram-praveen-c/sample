@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo 'Fetching source code from repository...'
                 // If using GitHub or Git, uncomment below line:
-                // git 'https://github.com/your-repo/java-calculator.git'
+                // git 'https://github.com/ram-praveen-c/sample.git'
                 echo 'Source code checkout complete.'
             }
         }
