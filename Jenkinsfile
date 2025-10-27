@@ -5,15 +5,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Setting up environment... 🏗️'
-                // Use your actual Python path below
-                bat '"C:\\Users\\rampraveen\\AppData\\Local\\Programs\\Python\\Python311\\python.exe" --version'
+                bat '"C:\\Python312\\python.exe" --version'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running calculator script... 🧮'
-                bat '"C:\\Users\\rampraveen\\AppData\\Local\\Programs\\Python\\Python311\\python.exe" Calculator.py'
+                echo 'Running calculator... 🧮'
+                bat '"C:\\Python312\\python.exe" Calculator.py'
             }
         }
 
