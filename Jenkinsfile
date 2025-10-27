@@ -1,51 +1,35 @@
 pipeline {
     agent any
 
-    environment {
-        APP_NAME = 'CalculatorApp'
-    }
-
     stages {
-        stage('Checkout') {
-            steps {
-                echo 'Fetching source code from repository...'
-                // If using GitHub or Git, uncomment below line:
-                // git 'https://github.com/ram-praveen-c/sample.git'
-                echo 'Source code checkout complete.'
-            }
-        }
-
         stage('Build') {
             steps {
-                echo 'Building the project... 🏗️'
-                bat 'python Calculator.py'
-                echo 'Build completed successfully.'
+                echo 'Setting up environment... 🏗️'
+                bat '"C:\\Users\\YourName\\AppData\\Local\\Programs\\Python\\Python311\\python.exe" --version'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running tests... 🧪'
-                bat 'Calculator'
-                echo 'All tests executed successfully.'
+                echo 'Running Python Calculator... 🧮'
+                bat '"C:\\Users\\YourName\\AppData\\Local\\Programs\\Python\\Python311\\python.exe" Calculator.py'
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploying the application... 🚀'
-                // You can add Docker or file copy commands here if needed
-                echo 'Deployment successful! ✅'
+                echo 'Deployment successful ✅'
             }
         }
     }
 
     post {
         success {
-            echo "🎉 Pipeline completed successfully for ${APP_NAME}!"
+            echo '✅ Pipeline executed successfully!'
         }
         failure {
-            echo "❌ Pipeline failed. Check logs for errors."
+            echo '❌ Pipeline failed. Check logs for details.'
         }
     }
 }
