@@ -5,14 +5,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Setting up environment... 🏗️'
-                bat '"C:\\Python312\\python.exe" --version'
+                bat '"C:\Users\cramp\AppData\Local\Microsoft\WindowsApps\python.exe" --version'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running calculator... 🧮'
-                bat '"C:\\Python312\\python.exe" Calculator.py'
+                bat '"C:\Users\cramp\AppData\Local\Microsoft\WindowsApps\python.exe" Calculator.py'
             }
         }
 
