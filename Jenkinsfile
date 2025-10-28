@@ -5,21 +5,22 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Setting up environment... 🏗️'
-                bat 'python --version'
+                // Use double backslashes for Windows paths
+                bat '"C:\\Users\\cramp\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe" --version'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running Calculator... 🧮'
-                bat 'python Calculator.py'
+                echo 'Running calculator... 🧮'
+                bat '"C:\\Users\\cramp\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe" calculator.py'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying application... 🚀'
-                echo '✅ Deployment successful!'
+                echo 'Deploying the application... 🚀'
+                echo '✅ Deployment Successful!'
             }
         }
     }
@@ -27,6 +28,9 @@ pipeline {
     post {
         failure {
             echo '❌ Pipeline failed. Check logs for details.'
+        }
+        success {
+            echo '🎉 Pipeline completed successfully.'
         }
     }
 }
