@@ -1,37 +1,47 @@
 pipeline {
     agent any
 
+    environment {
+        APP_NAME = "MyApp"
+    }
+
     stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/username/repository.git'
+            }
+        }
+
         stage('Build') {
             steps {
-                echo 'Building the project...'
-                sh 'javac Main.java'
+                echo "Building ${APP_NAME}..."
+                // Example for Maven build:
+                // sh 'mvn clean package'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                // (Here you can run test commands)
-                sh 'echo "All tests passed!"'
+                // Example for Python:
+                // sh 'pytest tests/'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying the application...'
-                // (You can replace this with real deployment commands)
-                sh 'echo "Application deployed successfully!"'
+                echo 'Deploying application...'
+                // Example: sh './deploy.sh'
             }
         }
     }
 
     post {
         success {
-            echo '✅ Pipeline completed successfully!'
+            echo 'Pipeline executed successfully!'
         }
         failure {
-            echo '❌ Pipeline failed. Please check the logs.'
+            echo 'Pipeline failed. Please check logs.'
         }
     }
 }
